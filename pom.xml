@@ -1,0 +1,17 @@
+public class Program{
+
+public static void main(String[] args) {
+
+        printThreeWords("Orange", "Bannana", "Apple");
+        checkSumSign();
+        printColor();
+        compareNumbers();
+        method5();
+        method6();
+        method7();
+        method8();
+        method9();
+
+        static void printThreeWords (string a, string b, string c){
+}
+}
