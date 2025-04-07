@@ -1,23 +1,26 @@
-package org.example;
+package Lesson_4;
 
-public class PuzenkoAlekseyL4 {
-
+public class Lesson_4 {
     public static void main(String[] args) {
 
         printThreeWords();
         checkSumSign();
         printColor();
         compareNumbers();
-        method5(5, 15);
+        System.out.println(method5(5, 35));
         method6(5);
-        method7(5);
+        System.out.println(method7(5, true));
         method8("Строка", 4);
-        method9(200);
+        System.out.println(method9(120));
         mass10(1, 1, 0, 0, 1, 0);
         mass11();
-        mass12(1, 5, 3, 2, 11, 4, 5, 2, 4,8, 9, 1);
+        mass12(1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1);
         mass13();
-        mass14(4, 5);
+        int[] myArray = mass14(5, 10);
+        for (int value : myArray) {
+            System.out.print(value + " ");
+        }
+
     }
 
     static void printThreeWords() {
@@ -38,7 +41,7 @@ public class PuzenkoAlekseyL4 {
         int value = 50;
         if (value <= 0) {
             System.out.println("Красный");
-        } else if (value > 0 && value <= 100) {
+        } else if (value <= 100) {
             System.out.println("Желтый");
         } else System.out.println("Зеленый");
     }
@@ -50,9 +53,14 @@ public class PuzenkoAlekseyL4 {
         else System.out.println("a<b");
     }
 
-    static void method5(int a, int b) {
-        boolean c = a + b >= 10 && a + b <= 20;
-        System.out.println(c);
+    public static boolean method5(int a, int b) {
+        boolean c;
+        if (a + b >= 10 && a + b <= 20) {
+            c = true;
+        } else {
+            c = false;
+        }
+        return c;
     }
 
     static void method6(int a) {
@@ -61,9 +69,13 @@ public class PuzenkoAlekseyL4 {
         else System.out.println("Число отрицательное");
     }
 
-    static void method7(int a) {
-        boolean c = a < 0;
-        System.out.println(c);
+    static boolean method7(int a, boolean c) {
+        if (a < 0) {
+            c = true;
+        } else {
+            c = false;
+        }
+        return c;
     }
 
     static void method8(String a, int b) {
@@ -72,7 +84,7 @@ public class PuzenkoAlekseyL4 {
         }
     }
 
-    static void method9(int a) {
+    static boolean method9(int a) {
         boolean b;
         if (a % 400 == 0) {
             b = true;
@@ -81,7 +93,7 @@ public class PuzenkoAlekseyL4 {
         } else if (a % 4 == 0) {
             b = true;
         } else b = false;
-        System.out.println(b);
+        return b;
     }
 
     static void mass10(int... nums) {
@@ -94,6 +106,7 @@ public class PuzenkoAlekseyL4 {
                 case 1:
                     nums[i] = 0;
                     System.out.print(nums[i]);
+                    break;
             }
         }
         System.out.println();
@@ -101,28 +114,29 @@ public class PuzenkoAlekseyL4 {
 
     static void mass11() {
         int nums[] = new int[100];
-        for (int i = 0; i <= nums.length-1; i++) {
-            nums[i] = i+1;
-            System.out.print(nums[i]+" ");
+        for (int i = 0; i <= nums.length - 1; i++) {
+            nums[i] = i + 1;
+            System.out.print(nums[i] + " ");
         }
         System.out.println();
     }
-    static void mass12(int... nums){
-        for (int i = 0; i <= nums.length-1; i++){
+
+    static void mass12(int... nums) {
+        for (int i = 0; i <= nums.length - 1; i++) {
             if (nums[i] < 6) {
-                nums[i]= nums[i]*2;
-                System.out.print(nums[i]+ " ");
-            }
-            else {
-            System.out.print(nums[i]+ " ");
+                nums[i] = nums[i] * 2;
+                System.out.print(nums[i] + " ");
+            } else {
+                System.out.print(nums[i] + " ");
             }
         }
         System.out.println();
     }
-    static void mass13 () {
-        int nums[][] =new int [5][5];
-        for (int i = 0; i <= nums.length-1; i++) {
-            for (int j = 0; j <= nums.length-1; j++) {
+
+    static void mass13() {
+        int nums[][] = new int[5][5];
+        for (int i = 0; i <= nums.length - 1; i++) {
+            for (int j = 0; j <= nums.length - 1; j++) {
                 if (i == j) {
                     nums[i][j] = 1;
                 } else nums[i][j] = 0;
@@ -130,22 +144,15 @@ public class PuzenkoAlekseyL4 {
                 System.out.print(nums[i][j]);
             }
             System.out.println();
-            }
         }
-    static void mass14(int len, int initialValue) {
-        int nums[] = new int [len];
-        for (int i = 0; i <= nums.length-1; i++) {
+    }
+
+    static int[] mass14(int len, int initialValue) {
+        int nums[] = new int[len];
+        for (int i = 0; i <= nums.length - 1; i++) {
             nums[i] = initialValue;
-            System.out.print(nums[i] + " ");
         }
-        System.out.println();
+        return nums;
     }
-    }
-
-
-
-
-
-
-
+}
 
