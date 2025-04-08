@@ -1,4 +1,4 @@
-package Lesson_6;
+package org.example.Lesson_6;
 
 public class Item {
 
