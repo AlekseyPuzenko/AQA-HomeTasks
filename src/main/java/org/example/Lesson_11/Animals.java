@@ -9,6 +9,7 @@ public class Animals {
         this.name = name;
         animalTotal++;
     }
+
     public static int getAnimalTotal() {
         return animalTotal;
     }

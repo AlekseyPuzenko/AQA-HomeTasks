@@ -1,7 +1,7 @@
 package org.example.Lesson_11;
 
 public class Bowl {
-    protected final  int bowlSize;
+    protected final int bowlSize;
     protected int fullBowlThisMoment;
 
 
@@ -17,15 +17,15 @@ public class Bowl {
         return false;
     }
 
-    public void fillBowl(int fullBowlThisMoment){
-        if (bowlSize - this.fullBowlThisMoment >= fullBowlThisMoment){
+    public void fillBowl(int fullBowlThisMoment) {
+        if (bowlSize - this.fullBowlThisMoment >= fullBowlThisMoment) {
             this.fullBowlThisMoment += fullBowlThisMoment;
         } else {
             this.fullBowlThisMoment = bowlSize;
         }
     }
 
-    public void fillBowl(){
+    public void fillBowl() {
         this.fullBowlThisMoment = bowlSize;
     }
 }

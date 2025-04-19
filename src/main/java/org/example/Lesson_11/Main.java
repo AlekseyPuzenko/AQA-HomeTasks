@@ -47,6 +47,5 @@ public class Main {
             cat.feedingCats(bowl);
         }
     }
-
-    }
+}
 
