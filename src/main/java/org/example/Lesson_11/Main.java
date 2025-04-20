@@ -46,6 +46,16 @@ public class Main {
         for (Cat cat : cats) {
             cat.feedingCats(bowl);
         }
+        System.out.println();
+
+
+        Shape circle = new Circle(3, "Красный", "Чёрный");
+        Shape rectangle = new Rectangle(4, 5, "Синий", "Белый");
+        Shape triangle = new Triangle(3, 4, 4, "Зелёный", "Жёлтый");
+
+        circle.printInfo();
+        rectangle.printInfo();
+        triangle.printInfo();
     }
 }
 
