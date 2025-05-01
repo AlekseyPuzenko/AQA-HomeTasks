@@ -1,0 +1,18 @@
+package org.example.Lesson_14_testng;
+
+public class Triangle {
+
+    public static double calculateArea(double sideA, double sideB, double sideC) {
+        if (sideA <= 0 || sideB <= 0 || sideC <= 0) {
+            throw new IllegalArgumentException("Стороны треугольника должны быть положительными");
+        }
+
+
+        if (sideA + sideB <= sideC || sideA + sideC <= sideB || sideB + sideC <= sideA) {
+            throw new IllegalArgumentException("Треугольник с такими сторонами не существует");
+        }
+
+        double p = (sideA + sideB + sideC) / 2;
+        return Math.sqrt(p * (p - sideA) * (p - sideB) * (p - sideC));
+    }
+}
