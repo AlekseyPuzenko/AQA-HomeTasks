@@ -1,4 +1,4 @@
-package Lesson_16;
+package Lesson_18;
 
 public enum PaySystemLogos {
     VISA("Visa", "//*[@id='pay-section']//ul/li[1]/img"),

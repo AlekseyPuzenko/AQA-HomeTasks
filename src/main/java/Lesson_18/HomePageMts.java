@@ -1,4 +1,4 @@
-package Lesson_16;
+package Lesson_18;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +12,7 @@ import java.time.Duration;
 public class HomePageMts extends OpenPage {
 
     @FindBy(xpath = "//h2[contains(., 'Онлайн пополнение')]")
-    private static WebElement onlineReplenishmentTitle;
+    private WebElement onlineReplenishmentTitle;
 
     @FindBy(xpath = "//a[contains(text(), 'Подробнее о сервисе')]")
     private WebElement moreAboutServiceLink;
@@ -36,7 +36,7 @@ public class HomePageMts extends OpenPage {
         super(driver);
     }
 
-    public static String getPageTitleText() {
+    public String getPageTitleText() {
         return onlineReplenishmentTitle.getText();
     }
 

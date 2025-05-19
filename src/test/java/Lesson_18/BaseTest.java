@@ -1,13 +1,19 @@
-package Lesson_16;
+package Lesson_18;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-
+import io.qameta.allure.Allure;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.time.Duration;
 
 public class BaseTest {
@@ -39,11 +45,17 @@ public class BaseTest {
 
         driver.get("https://www.mts.by");
         acceptCookies();
-        prepareTest();
     }
+    @AfterSuite
+    public void generateAndOpenAllureReport() throws IOException, InterruptedException {
+        ProcessBuilder generateProcess = new ProcessBuilder();
+        generateProcess.command("cmd.exe", "/c", "allure generate allure-results -o allure-report --clean");
+        Process generate = generateProcess.start();
+        generate.waitFor();
 
-    protected void prepareTest() {
-        driver.navigate().refresh();
+        ProcessBuilder openProcess = new ProcessBuilder();
+        openProcess.command("cmd.exe", "/c", "allure open allure-report");
+        openProcess.start();
     }
 
     protected void acceptCookies() {
@@ -66,5 +78,27 @@ public class BaseTest {
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(
                 By.cssSelector("iframe.bepaid-iframe")));
         driver.switchTo().defaultContent();
+    }
+
+    @AfterMethod
+    public void tearDown(ITestResult result) {
+        try {
+            if (result.getStatus() == ITestResult.FAILURE) {
+                takeScreenshot(result.getName());
+            }
+        } finally {
+            if (driver != null) {
+                driver.quit();
+            }
+        }
+    }
+
+    protected void takeScreenshot(String testName) {
+        try {
+            byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            Allure.addAttachment(testName, new ByteArrayInputStream(screenshot).toString(), "image/png");
+        } catch (Exception e) {
+            System.err.println("Failed to take screenshot: " + e.getMessage());
+        }
     }
 }
